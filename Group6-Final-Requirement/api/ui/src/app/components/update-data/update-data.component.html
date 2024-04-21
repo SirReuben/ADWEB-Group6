@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honoring Identity: Share Your Pronouns Here</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css">
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+      margin: 0;
+      padding: 60px;
+      padding-bottom: 160px;
+      box-sizing: border-box;
+      font-size: 16px;
+      color: #333333;
+    }
+
+    .card {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px); /* Hover effect - move card up */
+    }
+
+    .card-header {
+      color: #ffffff;
+      padding: 40px 0;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+      background: #005566;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 26px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+      padding: 30px;
+      
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      padding: 12px; /* Increased padding */
+      margin-bottom: 20px;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      width: 100%;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 18px; /* Adjusted font size */
+      color: #555555; /* Adjusted text color */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+    }
+
+    button.submit-btn {
+      padding: 16px 30px; /* Increased padding */
+      border: none;
+      border-radius: 12px; /* Slightly rounded corners */
+      color: #ffffff;
+      cursor: pointer;
+      background: #005566;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 20px;
+      margin-top: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      border: 2px solid transparent; /* Added border */
+    }
+
+    button.submit-btn:hover {
+      background: linear-gradient(135deg, #33c7cc, #0d758f);
+      box-shadow: 0 0 10px rgba(14, 30, 100, 0.5);
+    }
+
+    button.submit-btn:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(28, 131, 156, 0.5);
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 20px;
+      top: 40%;
+      transform: translateY(-50%);
+      color: #666;
+      font-size: 24px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none; /* Hide the modal by default */
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 20% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #005566;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #004451;
+    }
+
+    .close {
+      color: #888;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <form [formGroup]="updateForm" (ngSubmit)="updatePronoun()">
+      <div *ngIf="pronoun">
+      <label for="fullName">Full Name:</label>
+      <input id="fullName" type="text" formControlName="fullName" [(ngModel)]="pronoun.fullName" placeholder="Enter Full Name" required>
+    
+      <label for="contactDetails">Contact Details:</label>
+      <input id="contactDetails" type="text" formControlName="contactDetails" [(ngModel)]="pronoun.contactDetails"placeholder="Enter Contact Details" required>
+    
+      <label for="emailAddress">Email Address:</label>
+      <input id="emailAddress" type="email" formControlName="emailAddress" [(ngModel)]="pronoun.emailAddress" placeholder="Enter Email Address" required>
+    
+      <label for="preferredPronoun">Preferred Pronoun:</label>
+      <select id="preferredPronoun" formControlName="preferredPronoun" [(ngModel)]="pronoun.preferredPronoun" required>
+        <option value="" disabled>Select Preferred Pronoun</option>
+        <option value="he/him">He/Him</option>
+        <option value="she/her">She/Her</option>
+        <option value="they/them">They/Them</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+      <button type="submit" class="submit-btn">Update</button>
+    </form>
+    
+  </div>
+
+  <!-- Modal for Success Message -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Successfully Updated!</p>
+      <button id="okayBtn">Okay</button>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal and form elements
+    var modal = document.getElementById('successModal');
+    var contactForm = document.querySelector('form');
+
+    // Get the button that closes the modal
+    var okayBtn = document.getElementById('okayBtn');
+
+    // Function to reset the form
+    function resetForm() {
+      contactForm.reset(); // Reset the form
+    }
+
+    // When the user clicks the button, close the modal and reset the form
+    okayBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+      resetForm();
+    });
+
+    // Display the modal when the form is submitted
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent form submission
+      modal.style.display = 'block'; // Show the modal
+    });
+
+    // Close the modal when the user clicks anywhere outside of it
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        resetForm();
+      }
+    });
+
+    // Close the modal when the user clicks the close button
+    document.querySelector('.close').addEventListener('click', function () {
+      modal.style.display = 'none';
+      resetForm();
+    });
+
+  </script>
+</body>
+
+</html>

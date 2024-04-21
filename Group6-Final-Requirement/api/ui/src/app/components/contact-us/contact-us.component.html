@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<!-- External link for Boxicons CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding-bottom: 50px;
+    padding-top: 0px;
+    background: url('../../../assets/home-background-1.svg') no-repeat center center fixed; /* Adjust path as needed */
+    background-size: cover;
+    }
+    .header {
+        background-color: #005566;
+        color: #fff;
+        padding: 110px 0; /* Increased padding for header height */
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
+    .header h1 {
+        margin-bottom: 10px; /* Increased margin bottom */
+        font-size: 46px; /* Larger font size */
+        font-weight: bold; /* Added font weight */
+    }
+    .header p {
+        margin-bottom: 0;
+        font-size: 18px; /* Increased font size */
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+    }
+    .card {
+        flex-basis: 55%;
+        padding: 30px; /* Added padding */
+        background-color: #f8f9fa; /* Changed card color */
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        position: relative;
+        z-index: 0;
+        margin-top: -5%;
+        margin-left: -20%; /* Adjusted margin-left */
+        
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 26px;
+        color: #1f7b83;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    form {
+        padding:0 20px;
+    }
+
+    label{
+        display: block;
+      margin-bottom: 30px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: left;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+    label, input, textarea {
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif; /* Added font family */
+    }
+    input, textarea {
+        width: 95%;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px; /* Increased font size */
+    }
+    textarea {
+        height: 150px;
+    }
+    button {
+        padding: 16px 30px; /* Increased padding */
+      border: none;
+      border-radius: 12px; /* Slightly rounded corners */
+      color: #ffffff;
+      cursor: pointer;
+      background: #005566;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 20px;
+      margin-top: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      border: 2px solid transparent; /* Added border */
+        
+    }
+    button:hover {
+        background: linear-gradient(135deg, #187579, #0d758f);
+      box-shadow: 0 0 10px rgba(14, 30, 100, 0.5);
+    }
+    .contact-details {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        margin-top: 20px; /* Increased margin between cards */
+        font-size: 19px; /* Increased font size in contact details */
+        right: -15%;
+        
+    }
+    .contact-details:hover {
+        transform: translateY(-5px);
+    }
+    .contact-details h2 {
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+    .contact-details p {
+        margin-bottom: 5px;
+    }
+    .get-in-touch {
+        margin-top: 20px;
+    }
+    .get-in-touch h2 {
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+    .get-in-touch p {
+        margin-bottom: 5px;
+    }
+    .contact-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #e9ecef; /* Added background color */
+        transition: background-color 0.3s ease-in-out;
+    }
+    .contact-info:hover {
+        background-color: #d6d6d6; /* Hover background color */
+    }
+    .contact-info span {
+        margin-right: 10px;
+        font-size: 24px; /* Increased icon size */
+    }
+    .contact-info .icon {
+        font-size: 30px;
+    }
+    /* Additional styles for the right card */
+    .contact-details {
+        background-color: #114b63ef; /* Changed background color */
+        color: #fff; /* Changed text color */
+        padding: 30px; /* Increased padding */
+        position: relative; /* Added position */
+    }
+    .contact-details:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: calc(50% - 10px);
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent #eeedee transparent; /* Triangle border color */
+    }
+    .contact-info {
+        background-color: rgba(255, 255, 255, 0.1); /* Transparent background with opacity */
+        margin-bottom: 20px; /* Increased margin bottom */
+        padding: 15px; /* Increased padding */
+        position: relative; /* Added position */
+    }
+    .contact-info:before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: calc(50% - 10px);
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent rgba(255, 255, 255, 0.1) transparent; /* Triangle border color */
+    }
+    .contact-info:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Hover background with increased opacity */
+    }
+    .contact-info span {
+        margin-right: 15px; /* Increased margin */
+    }
+
+    button.submit-btn {
+  padding: 16px 30px; /* Increased padding */
+  border: none;
+  border-radius: 12px; /* Slightly rounded corners */
+  color: #ffffff;
+  cursor: pointer;
+  background: #005566;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 20px;
+  margin-top: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  border: 2px solid transparent; /* Added border */
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(135deg, #33c7cc, #0d758f);
+  box-shadow: 0 0 10px rgba(14, 30, 100, 0.5);
+}
+
+button.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(28, 131, 156, 0.5);
+}
+
+    
+</style>
+</head>
+<body>
+<div class="header">
+    <h1 style="color: white;">Contact Us</h1><br>
+    <p style="color: white;">Questions, feedback — we're here for it all</p>
+</div>
+<div class="container">
+    <div class="card">
+        <h1>Contact Us</h1>
+        <form action="#" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text"  placeholder="Enter Full Name" id="name" name="name" required>
+            <label for="email" >Email:</label>
+            <input type="email" placeholder="Enter Email Address" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message"  placeholder="Enter Message Here" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div class="card contact-details">
+        <h2 style="color: white; font-size: 30px; margin-bottom: 30px;">Get in touch with us!</h2>
+        <div class="contact-info">
+            <span class="icon"> <i class='bx bxs-building-house icon'></i></span>
+            <p>Diverse Tech Company</p>
+        </div>
+        <div class="contact-info">
+            <span class="icon">&#9990;</span>
+            <p>: +1 (123) 456-7890</p>
+        </div>
+        <div class="contact-info">
+            <span class="icon"><i class='bx bx-map icon'></i></span>
+            <p>: info-yourcompany.com</p>
+        </div>
+        <div class="contact-info">
+            <span class="'bx bxs-location-plus'"><i class='bx bx-phone icon'></i></span>
+            <p>: #1 Holy Angel Avenue, Sto. Rosario St., Angeles City 2009</p>
+        </div>
+        <div class="get-in-touch">
+            <h2 style="color: white;">If you have any questions or feedback, feel free to reach out to us!</h2>
+        </div>
+    </div>
+</div>
+</body>
+</html>

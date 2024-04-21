@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGBTQ+ Affirmation List</title>
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .custom-header {
+      background-color: #005566; /* Darker teal color */
+      color: #fff; /* Text color */
+      padding: 40px; /* Increased padding */
+      margin-bottom: 30px; /* Added margin bottom */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    }
+
+    .custom-header h2 {
+      margin-bottom: 0; /* Remove margin for the h2 element */
+    }
+
+    .card {
+      background-color: #fff; /* Card background color */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      transition: transform 0.3s ease-in-out; /* Smooth transition */
+      margin-top: 50px;
+    }
+
+    .card:hover {
+      transform: translateY(-5px); /* Hover effect - move card up */
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: #343a40; /* Table header background color */
+      color: #fff; /* Table header text color */
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f8f9fa; /* Alternate row background color */
+    }
+
+    tbody tr:hover {
+      background-color: #e9ecef; /* Hover effect on table row */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header custom-header d-flex justify-content-between align-items-center">
+        <h2 class="h2">LGBTQ+ Affirmation List</h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="bg-dark text-light">
+              <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Contact Number</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Pronouns</th>
+                <th class="text-center" scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pronoun of pronouns; let i = index">
+                    <td>{{ pronoun.fullName }}</td>
+                    <td>{{ pronoun.contactDetails }}</td>
+                    <td>{{ pronoun.emailAddress }}</td>
+                    <td>{{ pronoun.preferredPronoun }}</td>
+                    <td class="text-center">
+                        <button class="btn btn-success" [routerLink]="['/update-data', pronoun.id]">Edit</button>
+
+                      <button class="btn btn-danger" style="margin-left: 10px;" (click)="deletePronoun(pronoun.id)">Delete</button>
+                    </td>
+                  </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
